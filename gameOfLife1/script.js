@@ -192,3 +192,5 @@ function draw() {
         }
 
 }
+
+console.log("Welcome ");
