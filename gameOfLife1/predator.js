@@ -1,17 +1,31 @@
-class Predator extends LivingCreature{
+class Predator extends LivingCreature {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.energy = 15
         this.directions = []
     }
 
 
 
+    getNewCoordinates(){
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
+    }
+
+
 
 
     chooseCell(char, char1) {
         this.getNewCoordinates()
-        return super.chooseCell(char , char1)
+        return super.chooseCell(char, char1)
 
     }
 
