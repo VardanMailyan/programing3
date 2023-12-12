@@ -1,4 +1,10 @@
-class Tree extends LivingCreature{
+let LivingCreature = require("./LivingCreature")
+
+
+
+
+
+module.exports =  class Tree extends LivingCreature{
     constructor(x, y) {
         super(x,y)
 
@@ -6,8 +12,8 @@ class Tree extends LivingCreature{
 
     mul() {
 
-        let emptyCell = this.chooseCell(0)
-        let newCell = random(emptyCell)
+        let emptyCell = super.chooseCell(0)
+        let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
 
         if (newCell && this.multiply >= 5) {
             let newX = newCell[0]

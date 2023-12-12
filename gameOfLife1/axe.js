@@ -1,4 +1,7 @@
-class Axe extends LivingCreature{
+let LivingCreature = require("./LivingCreature")
+
+
+module.exports = class Axe extends LivingCreature{
     constructor(x, y) {
         super(x,y)
         this.energy = 15
@@ -31,7 +34,7 @@ class Axe extends LivingCreature{
 
     mul() {
         let emptyCell = this.chooseCell(0)
-        let newCell = random(emptyCell)
+        let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0]
