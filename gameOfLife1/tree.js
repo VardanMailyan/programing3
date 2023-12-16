@@ -15,7 +15,7 @@ module.exports =  class Tree extends LivingCreature{
         let emptyCell = super.chooseCell(0)
         let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
 
-        if (newCell && this.multiply >= 5) {
+        if (newCell && this.multiplay >= 5) {
             let newX = newCell[0]
             let newY = newCell[1]
 
@@ -25,7 +25,7 @@ module.exports =  class Tree extends LivingCreature{
             treeArr.push(tre)
 
 
-            this.multiply = 0
+            this.multiplay = 0
 
 
         }

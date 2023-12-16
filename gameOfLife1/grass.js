@@ -7,21 +7,19 @@ module.exports = class Grass extends LivingCreature{
     }
 
     mul() {
-        this.multiply++
+        this.multiplay++
         let emptyCell = super.chooseCell(0)
         let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
-
-        if (newCell && this.multiply >= 5) {
+        if (newCell && this.multiplay >= 5) {
             let newX = newCell[0]
             let newY = newCell[1]
-
             matrix[newY][newX] = 1
 
             let grass = new Grass(newX, newY)
             grassArr.push(grass)
 
 
-            this.multiply = 0
+            this.multiplay = 0
 
 
         }

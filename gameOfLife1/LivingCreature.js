@@ -15,6 +15,7 @@ module.exports = class LivingCreature{
         ];
     }
 
+
     chooseCell(char,char1) {
         let found = []
 
