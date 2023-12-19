@@ -88,7 +88,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, tree, axe, fir
 }
 
 
-matrix = matrixGenerator(20, 17, 7, 7, 7, 7, 7,7)
+matrix = matrixGenerator(30, 23, 7, 7, 7, 7, 7,7)
 
 
 io.sockets.emit("send matrix" , matrix)
@@ -202,7 +202,56 @@ function game(){
 
 setInterval(game , 500)
 
+/////ad button
+
+
+function AddGrass(){
+        for(let i = 0 ; i < 7 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
+
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 1
+                                let grass  = new Grass(x,y)
+                                grassArr.push(grass)
+                        }
+        }
+
+}
+
+
+
+
+
+
+
+
+
 
 io.on("connection" , function(socket){
-        createObject()
+        createObject(matrix)
+        socket.on("Add Grass" , AddGrass)
 })
+
+
+
+///// statistics
+
+var statistics = {
+
+}
+
+
+setInterval(function(){
+
+        statistics.grass = grassArr.length
+        statistics.grassEater = grassEaterArr.length
+        statistics.axe = axeArr.length
+        statistics.water = waterArr.length
+        statistics.fire = fireArr.length
+        statistics.tree = treeArr.length
+        statistics.predator = predatorArr.length
+        fs.writeFile("statistics.json" , JSON.stringify(statistics) , function(err){
+                console.log("Game of life Statistics");
+        })
+} , 1000)

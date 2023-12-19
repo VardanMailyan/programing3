@@ -13,7 +13,7 @@ module.exports =  class Tree extends LivingCreature{
     mul() {
 
         let emptyCell = super.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell && this.multiplay >= 5) {
             let newX = newCell[0]

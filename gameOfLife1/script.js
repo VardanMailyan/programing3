@@ -1,11 +1,11 @@
 var socket = io()
-let side = 30
+let side = 25
 ///օբյեկտներ պահելու զանգվածներ
 
 
 function setup() {
        
-        createCanvas(20 * side, 20 * side)
+        createCanvas(30 * side, 30 * side)
 
 
 }
@@ -52,3 +52,11 @@ function nkarel(matrix) {
 setInterval(function(){
         socket.on("send matrix" , nkarel)
 } , 500)
+
+
+//buttons
+
+
+function AddGrass(){
+        socket.emit("Add Grass")
+}

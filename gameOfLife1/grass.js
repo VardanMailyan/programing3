@@ -10,7 +10,7 @@ module.exports = class Grass extends LivingCreature{
         this.multiplay++
         let emptyCell = super.chooseCell(0)
         let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
-        if (newCell && this.multiplay >= 5) {
+        if (newCell && this.multiplay >= 3) {
             let newX = newCell[0]
             let newY = newCell[1]
             matrix[newY][newX] = 1

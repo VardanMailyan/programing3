@@ -34,7 +34,7 @@ module.exports = class Water extends LivingCreature{
 
     mul() {
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
         if (newCell) {
             let newX = newCell[0]
@@ -53,7 +53,7 @@ module.exports = class Water extends LivingCreature{
 
     eat() {
         let emptyCell = this.chooseCell(1, 2)
-        let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
 
         if (newCell) {
@@ -111,7 +111,7 @@ module.exports = class Water extends LivingCreature{
 
     move() {
         let emptyCell = this.chooseCell(0)
-        let newCell = emptyCell[Math.floor(Math.random * emptyCell.length)]
+        let newCell = emptyCell[Math.floor(Math.random() * emptyCell.length)]
 
 
         if (newCell) {
