@@ -73,17 +73,6 @@ module.exports = class Water extends LivingCreature{
                 }
             }
 
-            for (let i in predatorArr) {
-                if (newX == predatorArr[i].x && newY == predatorArr[i].y) {
-                    predatorArr.splice(i, 1)
-                }
-            }
-
-            for (let i in axeArr) {
-                if (newX == axeArr[i].x && newY == axeArr[i].y) {
-                    axeArr.splice(i, 1)
-                }
-            }
 
             for (let i in fireArr) {
                 if (newX == fireArr[i].x && newY == fireArr[i].y) {

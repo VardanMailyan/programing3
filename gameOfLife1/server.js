@@ -88,7 +88,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, tree, axe, fir
 }
 
 
-matrix = matrixGenerator(30, 23, 7, 7, 7, 7, 7,7)
+matrix = matrixGenerator(25, 20, 7, 7, 7, 7, 7, 7)
 
 
 io.sockets.emit("send matrix" , matrix)
@@ -200,7 +200,7 @@ function game(){
 
 }
 
-setInterval(game , 500)
+setInterval(game , 300)
 
 /////add button
 
@@ -241,7 +241,7 @@ function Addpredator(){
                 let y = Math.floor(Math.random() * matrix.length)
 
                         if(matrix[y][x] == 0){
-                                matrix[y][x] = 1
+                                matrix[y][x] = 3
                                 let predator  = new Predator(x,y)
                                 predatorArr.push(predator)
                         }
@@ -255,7 +255,7 @@ function Addwater(){
                 let y = Math.floor(Math.random() * matrix.length)
 
                         if(matrix[y][x] == 0){
-                                matrix[y][x] = 1
+                                matrix[y][x] = 7
                                 let water  = new Water(x,y)
                                 waterArr.push(water)
                         }
@@ -269,7 +269,7 @@ function Addfire(){
                 let y = Math.floor(Math.random() * matrix.length)
 
                         if(matrix[y][x] == 0){
-                                matrix[y][x] = 1
+                                matrix[y][x] = 6
                                 let fire  = new Fire(x,y)
                                 fireArr.push(fire)
                         }
@@ -283,7 +283,7 @@ function Addtree(){
                 let y = Math.floor(Math.random() * matrix.length)
 
                         if(matrix[y][x] == 0){
-                                matrix[y][x] = 1
+                                matrix[y][x] = 4
                                 let tree  = new Tree(x,y)
                                 treeArr.push(tree)
                         }
@@ -297,7 +297,7 @@ function Addaxe(){
                 let y = Math.floor(Math.random() * matrix.length)
 
                         if(matrix[y][x] == 0){
-                                matrix[y][x] = 1
+                                matrix[y][x] = 5
                                 let axe  = new Axe(x,y)
                                 axeArr.push(axe)
                         }
@@ -308,37 +308,40 @@ function Addaxe(){
 io.on("connection" , function(socket){
         createObject(matrix)
         socket.on("Add Grass" , AddGrass)
-})
-
-io.on("connection" , function(socket){
-        createObject(matrix)
         socket.on("Add GrassEater" , AddgrassEater)
-})
-
-io.on("connection" , function(socket){
-        createObject(matrix)
         socket.on("Add Predator" , Addpredator)
+        socket.on("Add Water" , Addwater)
+        socket.on("Add Fire" , Addfire)
+        socket.on("Add Axe" , Addaxe)
+        socket.on("Add Tree" , Addtree)
+        socket.on("Spring", Spring)
+        socket.on("Summer", Summer)
+        socket.on("Autumn", Autumn)
+        socket.on("Winter", Winter)
 })
 
-io.on("connection" , function(socket){
-        createObject(matrix)
-        socket.on("Add water" , Addwater)
-})
+var weather;
 
-io.on("connection" , function(socket){
-        createObject(matrix)
-        socket.on("Add fire" , Addfire)
-})
+function Winter() {
+        weather = "Winter";
+        io.sockets.emit('Winter', weather);
+}
+    
+function Summer() {
+        weather = "Summer";
+        io.sockets.emit('Summer', weather);
+}
+    
+function Spring() {
+        weather = "Spring";
+        io.sockets.emit('Spring', weather);
+}
+function Autumn() {
+        weather = "Autumn";
+        io.sockets.emit('Autumn', weather);
+}
 
-io.on("connection" , function(socket){
-        createObject(matrix)
-        socket.on("Add axe" , Addaxe)
-})
 
-io.on("connection" , function(socket){
-        createObject(matrix)
-        socket.on("Add tree" , Addtree)
-})
 ///// statistics
 
 var statistics = {
@@ -356,6 +359,6 @@ setInterval(function(){
         statistics.tree = treeArr.length
         statistics.predator = predatorArr.length
         fs.writeFile("statistics.json" , JSON.stringify(statistics) , function(err){
-                console.log("Game of life Statistics");
+                // console.log("Game of life Statistics")
         })
 } , 1000)

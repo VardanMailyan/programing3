@@ -16,7 +16,7 @@ module.exports = class LivingCreature{
     }
 
 
-    chooseCell(char,char1) {
+    chooseCell(char,char1,char2) {
         let found = []
 
 
@@ -31,6 +31,12 @@ module.exports = class LivingCreature{
 
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
                 if (matrix[y][x] == char1) {
+                    found.push(this.directions[i])
+                }
+            }
+
+            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                if (matrix[y][x] == char2) {
                     found.push(this.directions[i])
                 }
             }

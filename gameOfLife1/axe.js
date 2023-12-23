@@ -24,9 +24,9 @@ module.exports = class Axe extends LivingCreature{
 
 
 
-    chooseCell(char, char1) {
+    chooseCell(char, char1,char2) {
         this.getNewCoordinates()
-        return super.chooseCell(char,char1)
+        return super.chooseCell(char,char1,char2)
 
     }
 
@@ -52,7 +52,7 @@ module.exports = class Axe extends LivingCreature{
 
 
     eat() {
-        let emptyCell = this.chooseCell(1, 2)
+        let emptyCell = this.chooseCell(1,3,4)
         let newCell = emptyCell[Math.floor(Math.random()* emptyCell.length)]
 
 
@@ -67,11 +67,7 @@ module.exports = class Axe extends LivingCreature{
                 }
             }
 
-            for (let i in grassEaterArr) {
-                if (newX == grassEaterArr[i].x && newY == grassEaterArr[i].y) {
-                    grassEaterArr.splice(i, 1)
-                }
-            }
+     
 
             for (let i in predatorArr) {
                 if (newX == predatorArr[i].x && newY == predatorArr[i].y) {
@@ -79,9 +75,9 @@ module.exports = class Axe extends LivingCreature{
                 }
             }
 
-            for (let i in fireArr) {
-                if (newX == fireArr[i].x && newY == fireArr[i].y) {
-                    fireArr.splice(i, 1)
+            for (let i in treeArr) {
+                if (newX == treeArr [i].x && newY == treeArr [i].y) {
+                    treeArr.splice(i, 1)
                 }
             }
 
