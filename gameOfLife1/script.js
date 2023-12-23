@@ -60,3 +60,26 @@ setInterval(function(){
 function AddGrass(){
         socket.emit("Add Grass")
 }
+
+function AddgrassEater(){
+        socket.emit("Add GrassEater")
+}
+
+function Addpredator(){
+        socket.emit("Add Predator")
+}
+function Addwater(){
+        socket.emit("Add Water")
+}
+
+function Addfire(){
+        socket.emit("Add Fire")
+}
+
+function Addaxe(){
+        socket.emit("Add Axe")
+}
+
+function Addtree(){
+        socket.emit("Add Tree")
+}

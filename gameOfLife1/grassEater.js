@@ -105,6 +105,7 @@ module.exports =  class GrassEater extends LivingCreature{
         }
     }
 
+    
 
     die() {
         matrix[this.y][this.x] = 0

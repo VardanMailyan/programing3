@@ -202,7 +202,7 @@ function game(){
 
 setInterval(game , 500)
 
-/////ad button
+/////add button
 
 
 function AddGrass(){
@@ -220,21 +220,125 @@ function AddGrass(){
 }
 
 
+function AddgrassEater(){
+        for(let i = 0 ; i < 1 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
+
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 2
+                                let grassEater  = new GrassEater(x,y)
+                                grassEaterArr.push(grassEater)
+                        }
+        }
+
+}
 
 
+function Addpredator(){
+        for(let i = 0 ; i < 1 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
 
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 1
+                                let predator  = new Predator(x,y)
+                                predatorArr.push(predator)
+                        }
+        }
 
+}
 
+function Addwater(){
+        for(let i = 0 ; i < 1 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
 
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 1
+                                let water  = new Water(x,y)
+                                waterArr.push(water)
+                        }
+        }
 
+}
+
+function Addfire(){
+        for(let i = 0 ; i < 1 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
+
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 1
+                                let fire  = new Fire(x,y)
+                                fireArr.push(fire)
+                        }
+        }
+
+}
+
+function Addtree(){
+        for(let i = 0 ; i < 1 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
+
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 1
+                                let tree  = new Tree(x,y)
+                                treeArr.push(tree)
+                        }
+        }
+
+}
+
+function Addaxe(){
+        for(let i = 0 ; i < 1 ; i++){
+                let x = Math.floor(Math.random() * matrix.length)
+                let y = Math.floor(Math.random() * matrix.length)
+
+                        if(matrix[y][x] == 0){
+                                matrix[y][x] = 1
+                                let axe  = new Axe(x,y)
+                                axeArr.push(axe)
+                        }
+        }
+
+}
 
 io.on("connection" , function(socket){
         createObject(matrix)
         socket.on("Add Grass" , AddGrass)
 })
 
+io.on("connection" , function(socket){
+        createObject(matrix)
+        socket.on("Add GrassEater" , AddgrassEater)
+})
 
+io.on("connection" , function(socket){
+        createObject(matrix)
+        socket.on("Add Predator" , Addpredator)
+})
 
+io.on("connection" , function(socket){
+        createObject(matrix)
+        socket.on("Add water" , Addwater)
+})
+
+io.on("connection" , function(socket){
+        createObject(matrix)
+        socket.on("Add fire" , Addfire)
+})
+
+io.on("connection" , function(socket){
+        createObject(matrix)
+        socket.on("Add axe" , Addaxe)
+})
+
+io.on("connection" , function(socket){
+        createObject(matrix)
+        socket.on("Add tree" , Addtree)
+})
 ///// statistics
 
 var statistics = {
